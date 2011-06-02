@@ -20,6 +20,8 @@ def reset_database
   end
   ActiveRecord::Base.connection.create_table(:nav_items) do |t|
     t.string :label
+    t.string :link
+    t.string :title
     t.integer :parent_id
     t.integer :position
     t.string :highlights_on
@@ -34,8 +36,10 @@ end
 
 # Adds the *args to the klass and yields the new_klass
 # Good for temporarily testing out certain arguments
-def navigate(klass, *args)
+def navigable(klass, *args)
   klass.class_eval do
+    # navigable method here isn't actually this method,
+    # it's the method in the navigable gem
     navigable *args
   end
   yield

@@ -8,7 +8,7 @@ module Navigable
   def navigable(options={})
     cattr_accessor :navigable_config
     self.navigable_config = options
-    has_one :nav_item, :as => :navigable
+    has_one :navigation_item, :as => :navigable
     include Navigable::InstanceMethods
   end
 end
