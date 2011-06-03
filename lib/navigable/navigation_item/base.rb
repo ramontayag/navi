@@ -25,9 +25,11 @@ module Navigable
       return db_value if db_value
       if navigable && navigable_config(:title)
         config = navigable_config :title
-        return navigable.send config if config.is_a?(Symbol)
-        return config if config.is_a?(String)
-        return config.call navigable if config.is_a?(Proc)
+        return case config
+        when Symbol then navigable.send config
+        when String then config
+        when Proc then config.call navigable
+        end
       end
       return self.label
     end
@@ -39,8 +41,10 @@ module Navigable
       else # db_value.nil?
         if navigable && navigable_config(:highlights_on)
           config = navigable_config(:highlights_on)
-          return config.call navigable if config.is_a?(Proc)
-          config
+          case config
+          when Proc then config.call navigable
+          else config
+          end
         else
           self.link
         end

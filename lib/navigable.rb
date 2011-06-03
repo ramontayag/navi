@@ -1,5 +1,4 @@
 require 'active_support'
-require 'active_support/core_ext/module/aliasing'
 require 'active_record'
 require 'navigable/navigation_item'
 require 'navigable/instance_methods'
@@ -11,6 +10,10 @@ module Navigable
     has_one :navigation_item, :as => :navigable
     include Navigable::InstanceMethods
   end
+
+  # Renderer
+  mattr_accessor :renderer
+  @@renderer = Navigable::Renderers::SimpleNavigation
 end
 
 ActiveRecord::Base.extend Navigable
