@@ -7,8 +7,6 @@ require 'rspec'
 require 'navigable'
 
 #Allow to connect to SQLite
-root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-Dir.mkdir("db") unless File.directory?("db")
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",
   :database => ":memory:"

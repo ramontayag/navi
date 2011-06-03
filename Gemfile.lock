@@ -26,6 +26,8 @@ GEM
       git (>= 1.2.5)
       rake
     libnotify (0.5.5)
+    ordered_tree (0.1.1)
+      activerecord (>= 3.0.0)
     rake (0.9.1)
     rb-inotify (0.8.4)
       ffi (>= 0.5.0)
@@ -52,6 +54,7 @@ DEPENDENCIES
   guard-rspec
   jeweler (~> 1.5.2)
   libnotify
+  ordered_tree (= 0.1.1)
   rb-inotify
   rcov
   rspec (~> 2.6.0)

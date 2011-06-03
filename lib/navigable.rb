@@ -1,7 +1,9 @@
 require 'active_support'
 require 'active_record'
+require "active_support/core_ext/module" # so we can use mattr_accessor
 require 'navigable/navigation_item'
 require 'navigable/instance_methods'
+require 'navigable/renderers'
 
 module Navigable
   def navigable(options={})
