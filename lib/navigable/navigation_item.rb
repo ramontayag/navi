@@ -1,11 +1,11 @@
+require 'navigable/navigation_item/class_methods'
 require 'navigable/navigation_item/instance_methods'
 
 module Navigable
   module NavigationItem
-    extend ActiveSupport::Concern
-    included do
-      belongs_to :navigable, :polymorphic => true
+    def self.included(base)
+      base.send :include, Navigable::NavigationItem::ClassMethods
+      base.send :include, Navigable::NavigationItem::InstanceMethods
     end
-    included Navigable::NavigationItem::InstanceMethods
   end
 end
