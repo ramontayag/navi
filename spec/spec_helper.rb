@@ -5,6 +5,8 @@ require 'active_support'
 require 'active_record'
 require 'rspec'
 require 'navigable'
+require 'spec/fixtures/category'
+require 'spec/fixtures/nav_item'
 
 #Allow to connect to SQLite
 ActiveRecord::Base.establish_connection(
