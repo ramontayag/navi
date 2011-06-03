@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 class NavItem < ActiveRecord::Base
-  include Navigable::NavigationItem
+  navigator
 end
 
 class Category < ActiveRecord::Base
