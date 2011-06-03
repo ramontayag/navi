@@ -1,8 +1,16 @@
-= navigable
+h1. navigable
 
-Description goes here.
+*navigable* puts the navigation (aka menu) in the database. That means you and/or your users can edit and control it. It was made with "WordPress' menu editor":http://dl.dropbox.com/u/16150176/until%20dec%202013/wp-menu.png in mind.
 
-== Contributing to navigable
+h2. Installation
+
+In your Gemfile: @gem 'navigable'@
+
+h2. Usage
+
+h2. More on renderers
+
+h2. Contributing to navigable
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -12,8 +20,7 @@ Description goes here.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+h2. Copyright
 
 Copyright (c) 2011 Ramon Tayag. See LICENSE.txt for
 further details.
-
