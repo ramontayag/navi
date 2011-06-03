@@ -47,5 +47,17 @@ describe Navigable do
         Category.create.to_navigator(:title => "Titulo").title.should == "Titulo"
       end
     end
+
+    describe "when a parent is specified" do
+      it "should be created under that parent" do
+        cars = Category.create :name => "Cars"
+        chevy = Category.create :name => "Chevy"
+        cars_nav = cars.to_navigator
+        cars_nav.save
+        chevy_nav = chevy.to_navigator(:parent_id => cars_nav.id)
+        chevy_nav.save
+        chevy_nav.parent.should == cars_nav
+      end
+    end
   end
 end

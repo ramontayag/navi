@@ -1,5 +1,6 @@
 require 'active_support'
 require 'active_record'
+require 'ordered_tree'
 require "active_support/core_ext/module" # so we can use mattr_accessor
 require 'navigable/navigation_item'
 require 'navigable/instance_methods'
