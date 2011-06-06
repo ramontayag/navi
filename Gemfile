@@ -13,6 +13,7 @@ group :development do
   gem "jeweler", "~> 1.5.2"
   gem "rcov", ">= 0"
 
+  gem 'rails', '3.0.7'
   gem 'sqlite3'
   gem 'guard-rspec'
   gem 'libnotify'
