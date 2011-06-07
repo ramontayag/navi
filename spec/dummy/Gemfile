@@ -2,6 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 gem 'apotomo', '1.1.1'
+gem 'haml'
+gem 'inherited_resources'
+gem "ordered_tree", "0.1.1" # have to include ordered tree here because I haven't found a way to include what gems navi relies on; since we just edited the config/boot.rb to add navi's lib to the loadpath.
+gem 'jquery-rails', '>= 1.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -31,7 +35,8 @@ group :development, :test do
   gem 'rspec-rails', '2.6.1'
   gem 'cucumber-rails', '0.4.1'
   gem 'capybara', '0.4.1.2'
-  gem 'guard-cucumber'
+  gem 'guard-cucumber', '0.3.4'
   gem 'libnotify'
   gem 'rb-inotify'
+  gem 'nifty-generators'
 end

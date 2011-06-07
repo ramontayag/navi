@@ -1,4 +1,7 @@
 Dummy::Application.routes.draw do
+  resources :menu_items
+  resources :pages
+  resources :categories
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

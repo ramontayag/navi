@@ -1,0 +1,17 @@
+%div#pages.index
+  %h1 Pages
+
+  %ul
+    %li= link_to "New page", new_page_path
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th{:colspan => 2} Modify
+    %tbody
+      - @pages.each do |page|
+        %tr
+          %td= page.name
+          %td= link_to "Edit", [:edit, page]
+          %td= button_to "Delete", page, :method => :delete

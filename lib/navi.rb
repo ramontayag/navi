@@ -3,18 +3,12 @@ require "active_support/core_ext/module" # so we can use mattr_accessor
 require 'active_record'
 require 'ordered_tree'
 require 'navi/navigable/base'
-require 'navi/navigator/base'
-#require 'navi/renderers/base'
 
 module Navi
-  #module Navigable
-    #autoload :Base, 'navi/navigable/base'
-  #end
+  module Navigator
+    autoload :Base, 'navi/navigator/base'
+  end
 
-  #module Navigator
-    #autoload :Base, 'navi/navigator/base'
-  #end
-  
   module Renderers
     autoload :Base, 'navi/renderers/base'
     autoload :SimpleNavigation, 'navi/renderers/simple_navigation'

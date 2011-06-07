@@ -40,3 +40,6 @@ pkg
 #
 # For vim:
 *.swp
+
+# ignore some stuff in the included dummy app
+spec/dummy/db/*.sql
