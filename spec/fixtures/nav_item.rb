@@ -1,3 +1,2 @@
-class NavItem < ActiveRecord::Base
-  navigator
+class NavItem < Navi::Navigator::Base
 end

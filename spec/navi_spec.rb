@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Navigable do
+describe Navi do
   before {reset_database}
   describe "with renderers," do
     before do
@@ -8,13 +8,13 @@ describe Navigable do
       end
     end
 
-    it "should default to Navigable::Renderers::SimpleNavigation" do
-      Navigable.renderer.should == Navigable::Renderers::SimpleNavigation
+    it "should default to Navi::Renderers::SimpleNavigation" do
+      Navi.renderer.should == Navi::Renderers::SimpleNavigation
     end
 
     it "should allow customization" do
-      Navigable.renderer = SomeRenderer
-      Navigable.renderer.should == SomeRenderer
+      Navi.renderer = SomeRenderer
+      Navi.renderer.should == SomeRenderer
     end
   end
 
@@ -54,8 +54,12 @@ describe Navigable do
         chevy = Category.create :name => "Chevy"
         cars_nav = cars.to_navigator
         cars_nav.save
+        puts "This is the cars_nav: #{cars_nav.inspect}"
         chevy_nav = chevy.to_navigator(:parent_id => cars_nav.id)
+        puts "This is the chevy_nav: #{chevy_nav.inspect}"
         chevy_nav.save
+        puts "This is the chevy_nav: #{chevy_nav.inspect}"
+        #chevy_nav.reload
         chevy_nav.parent.should == cars_nav
       end
     end

@@ -10,6 +10,6 @@ require 'spec_helper'
 #
 # That means this is the output we need if we want to get it working with SimpleNavigation.
 
-describe Navigable::Renderers::SimpleNavigation do
+describe Navi::Renderers::SimpleNavigation do
   
 end

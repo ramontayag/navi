@@ -1,5 +1,5 @@
-module Navigable
-  module NavigationItem
+module Navi
+  module Navigator
     module InstanceMethods
       def label
         db_value = self.read_attribute :label

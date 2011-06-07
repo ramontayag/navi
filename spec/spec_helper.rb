@@ -4,7 +4,7 @@ require 'rubygems'
 require 'active_support'
 require 'active_record'
 require 'rspec'
-require 'navigable'
+require 'navi'
 require 'spec/fixtures/category'
 require 'spec/fixtures/nav_item'
 

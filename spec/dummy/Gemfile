@@ -31,8 +31,7 @@ group :development, :test do
   gem 'rspec-rails', '2.6.1'
   gem 'cucumber-rails', '0.4.1'
   gem 'capybara', '0.4.1.2'
-  gem 'sqlite3'
-  gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'libnotify'
   gem 'rb-inotify'
 end

@@ -1,13 +1,5 @@
 require 'spec_helper'
 
-class NavItem < ActiveRecord::Base
-  navigator
-end
-
-class Category < ActiveRecord::Base
-  navigable
-end
-
 describe NavItem do
   before {reset_database}
 

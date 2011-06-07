@@ -3,7 +3,8 @@ source "http://rubygems.org"
 # Example:
 gem "activesupport", ">= 3.0.0"
 gem "activerecord", ">= 3.0.0"
-gem "ordered_tree", "0.1.1"
+#gem "ordered_tree", "0.1.1"
+gem "ordered_tree", :path => "/home/ramon/source/ordered_tree"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
