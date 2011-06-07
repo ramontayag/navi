@@ -1,0 +1,6 @@
+= widget_div do
+  %h1 Category
+  = form_for :category_menu_item, :url => url_for_event(:submit), :remote => true do |f|
+    %fieldset
+      -#= f.collection_select :category_id, @categories, :id, :name
+    = f.submit

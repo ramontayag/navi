@@ -1,0 +1,5 @@
+= widget_div do
+  %h1 Menu Items
+  %ul
+    - @menu_items.each do |menu_item|
+      %li= menu_item.label

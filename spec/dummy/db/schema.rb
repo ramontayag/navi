@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20110607160052) do
     t.datetime "updated_at"
   end
 
-  create_table "nav_items", :force => true do |t|
+  create_table "menu_items", :force => true do |t|
     t.string   "label"
     t.string   "link"
     t.string   "title"
