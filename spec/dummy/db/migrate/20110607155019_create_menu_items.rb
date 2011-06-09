@@ -4,7 +4,7 @@ class CreateMenuItems < ActiveRecord::Migration
       t.string :label
       t.string :link
       t.string :title
-      t.integer :parent_id
+      t.integer :parent_id, :default => 0
       t.integer :position
       t.string :highlights_on
       t.integer :navigable_id

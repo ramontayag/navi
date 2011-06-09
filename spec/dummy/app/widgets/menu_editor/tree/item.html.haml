@@ -1,0 +1,7 @@
+%li{:id => dom_id(@menu_item), :class => "menu_item"}
+  %span
+    = @menu_item.label
+    \-
+    = link_to "Edit", [:edit, @menu_item]
+    = button_to "Delete", @menu_item, :method => :delete, :confirm => "Sure?"
+  %ol= render({:state => :items}, @menu_item.children)

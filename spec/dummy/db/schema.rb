@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110607160052) do
     t.string   "label"
     t.string   "link"
     t.string   "title"
-    t.integer  "parent_id"
+    t.integer  "parent_id",      :default => 0
     t.integer  "position"
     t.string   "highlights_on"
     t.integer  "navigable_id"

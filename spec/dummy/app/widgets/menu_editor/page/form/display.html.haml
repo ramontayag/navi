@@ -3,5 +3,6 @@
 
   = form_for :menu_item, :url => url_for_event(:submit), :remote => true do |f|
     %fieldset
-      -#= f.collection_select :page_id, @pages, :id, :name
-    = f.submit
+      = f.hidden_field :navigable_type, :value => "Page"
+      = f.collection_select :navigable_id, @pages, :id, :name
+    = f.submit "Save Menu Item"

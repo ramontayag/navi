@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 gem 'apotomo', '1.1.1'
+#gem 'apotomo', :path => "/home/ramon/source/apotomo"
 gem 'haml'
 gem 'inherited_resources'
 gem "ordered_tree", "0.1.1" # have to include ordered tree here because I haven't found a way to include what gems navi relies on; since we just edited the config/boot.rb to add navi's lib to the loadpath.
@@ -35,6 +36,10 @@ group :development, :test do
   gem 'rspec-rails', '2.6.1'
   gem 'cucumber-rails', '0.4.1'
   gem 'capybara', '0.4.1.2'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'machinist'
+  gem 'faker'
   gem 'guard-cucumber', '0.3.4'
   gem 'libnotify'
   gem 'rb-inotify'
