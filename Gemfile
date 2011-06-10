@@ -7,7 +7,7 @@ gem "ordered_tree", "0.1.1"
 
 # Comment out group block first because cucumber features were complaining that
 # These gems didn't exist, even if the group included the cucumber/test
-# group!
+# group! `bundle exec guard` doesn't work!
 #group :development, :test, :cucumber do
   gem "rspec", "~> 2.6.0"
   gem "bundler", "~> 1.0.0"
