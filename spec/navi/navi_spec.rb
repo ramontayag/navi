@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Navi do
-  before {reset_database}
+  before :all do
+    # Since our test app uses :menu_item instead of the default :nav_item,
+    # Set it here
+    Navi.navigator = :menu_item
+  end
+
   describe "with renderers," do
     before do
       class SomeRenderer
@@ -22,7 +27,7 @@ describe Navi do
     describe "when the nav_item exists" do
       it "should return the nav_item" do
         c = Category.create
-        nav_item = NavItem.create :navigable => c
+        nav_item = MenuItem.create :navigable => c
         c.to_navigator.should == nav_item
       end
     end
@@ -58,6 +63,14 @@ describe Navi do
         chevy_nav.save
         chevy_nav.parent.should == cars_nav
       end
+    end
+  end
+
+  describe "#to_navigator!" do
+    it "should immediately create the navigator item" do
+      category = Category.make
+      navigator = category.to_navigator!
+      navigator.should_not be_new_record
     end
   end
 end

@@ -3,3 +3,9 @@
 
 %div#menu_items.index
   = render_widget :menu_editor
+
+  %div
+    %p Note: you have to refresh the page to rerender this menu
+
+    %h1 Rendered with SimpleNavigation
+    %div#simple_navigation= navi_render(MenuItem.roots)

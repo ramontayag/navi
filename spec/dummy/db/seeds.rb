@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require '../../spec/blueprints'
+
+Page.make :name => "Home"
+Page.make :name => "About"
+
+Category.make :name => "Cars"
+Category.make :name => "Animals"

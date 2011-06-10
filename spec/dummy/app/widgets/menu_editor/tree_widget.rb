@@ -1,7 +1,7 @@
 class MenuEditor::TreeWidget < Apotomo::Widget
   responds_to_event :submit
-  #responds_to_event :new_menu_item, :with => :add_item, :passing => :menu_editor
-  responds_to_event :new_menu_item, :with => :add_item, :passing => :root
+  responds_to_event :new_menu_item, :with => :add_item, :passing => :menu_editor
+  #responds_to_event :new_menu_item, :with => :add_item, :passing => :root
   include ActionController::RecordIdentifier
   include ActionView::Helpers::JavaScriptHelper
   include Rack::Utils
