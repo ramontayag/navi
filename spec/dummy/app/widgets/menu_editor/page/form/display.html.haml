@@ -1,0 +1,8 @@
+= widget_div do
+  %h1 Pages
+
+  = form_for :menu_item, :url => url_for_event(:submit), :remote => true do |f|
+    %fieldset
+      = f.hidden_field :navigable_type, :value => "Page"
+      = f.collection_select :navigable_id, @pages, :id, :name
+    = f.submit "Save Menu Item"

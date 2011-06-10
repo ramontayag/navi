@@ -1,0 +1,17 @@
+%div#categories.index
+  %h1 Categories
+
+  %ul
+    %li= link_to "New category", new_category_path
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th{:colspan => 2} Modify
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td= category.name
+          %td= link_to "Edit", [:edit, category]
+          %td= button_to "Delete", category, :method => :delete

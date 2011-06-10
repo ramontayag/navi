@@ -1,0 +1,4 @@
+= widget_div do
+  %h1 Menu Items
+  %ol.sortable= render({:state => :items}, @menu_items)
+  = button_to "Save", url_for_event(:submit), :id => "save", :remote => true

@@ -1,0 +1,5 @@
+= div_for @page do
+  %h1 Edit page
+  = form_for @page do |f|
+    = render :partial => 'form', :locals => {:f => f}
+    = f.submit
