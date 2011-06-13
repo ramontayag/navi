@@ -5,10 +5,17 @@ gem "activesupport", ">= 3.0.0"
 gem "activerecord", ">= 3.0.0"
 gem "ordered_tree", "0.1.2"
 
-# Comment out group block first because cucumber features were complaining that
-# These gems didn't exist, even if the group included the cucumber/test
-# group! `bundle exec guard` doesn't work!
-#group :development, :test, :cucumber do
+# If you're going to do any development and run any tests, comment out the start
+# and end of the group block
+#   * group :development, :test, :cucumber do
+#   * end
+#
+# If you don't, cucumber features will complaining that
+# these gems didn't exist, even if the group below includes
+# :test and :cucumber environments!
+#
+# Just remember to uncomment them when you publish (or make a pull request).
+group :development, :test, :cucumber do
   gem "rspec", "~> 2.6.0"
   gem "bundler", "~> 1.0.0"
   gem "jeweler", "~> 1.5.2"
@@ -38,4 +45,4 @@ gem "ordered_tree", "0.1.2"
   gem 'libnotify'
   gem 'rb-inotify'
   gem 'nifty-generators'
-#end
+end
