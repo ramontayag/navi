@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # These gems are the only ones that this gem needs
 gem "activesupport", ">= 3.0.0"
 gem "activerecord", ">= 3.0.0"
-gem "ordered_tree", ">= 0.1.3"
+gem "ordered_tree", ">= 0.1.5"
 
 # If you're going to do any development and run any tests, comment out the start
 # and end of the group block
