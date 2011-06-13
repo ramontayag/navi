@@ -141,8 +141,14 @@ describe MenuItem do
 
   describe "#highlights_on," do
     describe "when the link field is not nil" do
-      it "should return the value converted to regex" do
-        MenuItem.new(:highlights_on => "holy").highlights_on.should == /holy/
+      it "should return the string value converted to regex" do
+        item = MenuItem.create(:highlights_on => "holy")
+        item.highlights_on.should == /holy/
+      end
+
+      it "should return the regexp value if set to regexp" do
+        item = MenuItem.create(:highlights_on => /holy/)
+        item.highlights_on.should == /holy/
       end
     end
 
