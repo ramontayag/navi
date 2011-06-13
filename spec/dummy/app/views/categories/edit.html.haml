@@ -1,0 +1,5 @@
+= div_for @category do
+  %h1 Edit category
+  = form_for @category do |f|
+    = render :partial => 'form', :locals => {:f => f}
+    = f.submit
