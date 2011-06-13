@@ -42,7 +42,7 @@ rerun.txt
 #.\#*
 #
 # For vim:
-*.swp
+*.sw*
 
 # ignore some stuff in the included dummy app
 spec/dummy/db/*.sql
