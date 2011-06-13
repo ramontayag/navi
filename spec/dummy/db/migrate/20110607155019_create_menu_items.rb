@@ -9,6 +9,7 @@ class CreateMenuItems < ActiveRecord::Migration
       t.string :highlights_on
       t.integer :navigable_id
       t.string :navigable_type
+      t.integer :site_id
       t.timestamps
     end
   end

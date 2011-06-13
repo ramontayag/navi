@@ -2,6 +2,35 @@ require 'spec_helper'
 
 describe MenuItem do
   #before {reset_database}
+  describe "when configuring ordered_tree" do
+    # After we run the tests, reset the ordered tree changes we may have made
+    after { MenuItem.class_eval {
+      ordered_tree # set ordered_tree with no args
+      def scope_condition; "1"; end # this is the default scope condition in ordered_tree gem
+    } }
+
+    it "should allow overriding of ordered_tree's scope_condition" do
+      MenuItem.class_eval do
+        def scope_condition
+          "site_id = #{site_id}"
+        end
+      end
+      MenuItem.create(:site_id => 1)
+      MenuItem.create(:site_id => 2)
+      menu_item = MenuItem.create(:site_id => 1)
+      menu_item.position.should == 2
+    end
+
+    it "should allow reconfiguration of ordered_tree" do
+      MenuItem.class_eval do
+        ordered_tree :scope => :site
+      end
+      MenuItem.create(:site_id => 3)
+      MenuItem.create(:site_id => 4)
+      menu_item = MenuItem.create(:site_id => 3)
+      menu_item.position.should == 2
+    end
+  end
 
   describe "#label" do
     it "should return the database entry when it exists" do

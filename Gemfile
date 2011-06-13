@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # These gems are the only ones that this gem needs
 gem "activesupport", ">= 3.0.0"
 gem "activerecord", ">= 3.0.0"
-gem "ordered_tree", "0.1.1"
+gem "ordered_tree", "0.1.2"
 
 # Comment out group block first because cucumber features were complaining that
 # These gems didn't exist, even if the group included the cucumber/test
