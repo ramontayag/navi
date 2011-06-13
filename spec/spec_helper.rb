@@ -19,6 +19,7 @@ Capybara.default_selector = :css
 
 # Run down then up any available migration in the dummy app
 def migrate(direction)
+  puts "Will migrate #{direction}"
   migration_directory = File.expand_path "../dummy/db/migrate", __FILE__
   migration_files = Dir["#{migration_directory}/[0-9]*_*.rb"]
   migration_files.each {|migration_file| require migration_file} # require them so we can execute them
