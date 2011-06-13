@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{navi}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ramon Tayag"]
   s.date = %q{2011-06-13}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Allows you to save menu items in the database. You can create your own renderer.}
   s.email = %q{ramon@tayag.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
     "lib/navi/railtie.rb",
     "lib/navi/renderers/base.rb",
     "lib/navi/renderers/simple_navigation.rb",
+    "navi.gemspec",
     "spec/blueprints.rb",
     "spec/dummy/.gitignore",
     "spec/dummy/Rakefile",
@@ -130,11 +131,11 @@ Gem::Specification.new do |s|
     "spec/navi/renderers/simple_navigation_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/ramon.tayag/navi}
+  s.homepage = %q{http://github.com/ramontayag/navi}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Allows you to save menu items in the database.}
   s.test_files = [
     "spec/blueprints.rb",
     "spec/dummy/app/controllers/application_controller.rb",
