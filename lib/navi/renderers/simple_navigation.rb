@@ -15,13 +15,20 @@ module Navi
       def create_dynamic_items(collection)
         nav = []
         collection.each do |nav_item|
-          nav << {
-            :key => @template.dom_id(nav_item).to_sym,
-            :name => nav_item.label,
-            :url => @template.polymorphic_path(nav_item.link),
-            :options => {:title => nav_item.title, :class => nav_item.class.name.underscore},
-            :items => create_dynamic_items(nav_item.children)
-          }
+          item = {}
+          item[:key] = @template.dom_id(nav_item).to_sym
+          item[:name] = nav_item.label
+          if nav_item.link.is_a?(String)
+            item[:url] = nav_item.link
+          else # it's a database record then!
+            puts "This is the link: #{nav_item.link.inspect}"
+            item[:url] = @template.polymorphic_path(nav_item.link)
+            #item[:url] = "/"
+          end
+          item[:options] = {:title => nav_item.title, :class => nav_item.class.name.underscore}
+          item[:items] = create_dynamic_items(nav_item.children)
+
+          nav << item
         end
         nav
       end
