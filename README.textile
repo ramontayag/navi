@@ -38,7 +38,7 @@ You can pass any of the following arguments, in a form of a hash, into @to_navig
 
 * :label
 * :title
-* :link
+* :url
 * :highlights_on
 * :parent_id
 * :position

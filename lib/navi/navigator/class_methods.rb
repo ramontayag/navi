@@ -12,6 +12,8 @@ module Navi
         self.abstract_class = true
 
         belongs_to :navigable, :polymorphic => true
+        validates :label, :presence => true, :unless => Proc.new {|m| m.navigable.present?}
+        validates :url, :presence => true, :unless => Proc.new {|m| m.navigable.present?}
 
         # Calling ordered_tree on the child is important because
         # of this: http://stackoverflow.com/q/6262033/61018
