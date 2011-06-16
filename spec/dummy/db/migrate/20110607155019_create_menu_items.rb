@@ -2,7 +2,7 @@ class CreateMenuItems < ActiveRecord::Migration
   def self.up
     create_table(:menu_items) do |t|
       t.string :label
-      t.string :link
+      t.string :url
       t.string :title
       t.integer :parent_id, :default => 0
       t.integer :position

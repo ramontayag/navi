@@ -1,14 +1,60 @@
 h1. navigable
 
-*navigable* puts the navigation (aka menu) in the database. That means you and/or your users can edit and control it. It was made with "WordPress' menu editor":http://dl.dropbox.com/u/16150176/until%20dec%202013/wp-menu.png in mind.
+*navi* puts the navigation (aka menu) in the database. That means you and/or your users can edit and control it. It was made with "WordPress' menu editor":http://dl.dropbox.com/u/16150176/until%20dec%202013/wp-menu.png in mind.
+
+Here are a few things to keep in mind:
+
+* navigable - this is the thing in the database, like a Page or a Category, that you've allowed to be added to the navigation (aka menu).
+* navigator - this is the record that may or may not point to the navigable item. This is a database record that represents the navigation item (menu item).
+* renderer - with all the navigables and navigators, the renderer puts it all together and creates the HTML to form the navigation.
 
 h2. Installation
 
-In your Gemfile: @gem 'navigable'@
+This has only been tested with Rails 3.0.x.
+
+In your Gemfile: @gem 'navi'@
 
 h2. Usage
 
-h2. More on renderers
+All navigation items (aka menu items) are database entries. Thus, you should create your own model for this. By default, the model name @navi@ looks for is @nav_item@, so go ahead and make it.
+
+pre. class NavItem < Navi::Navigator::Base
+  # Yup, you don't need to put anything here since most of what you want comes from Navi::Navigator::Base
+  # I'll eventually explain what you can override in the wiki.
+end
+
+Then, whatever you want to be able to become a navigation item in your navigation (menu), add @navigable@ to the class, like we do to @Page@:
+
+pre. class Page < ActiveRecord::Base
+  navigable
+end
+
+With this, Page will get the following instance methods:
+
+pre. @page.to_navigator # initialized a new NavItem instance that can be saved into the database with a .save call on it.
+@page.to_navigator! # initializes and saves the new NavItem, all in one call.
+
+You can pass any of the following arguments, in a form of a hash, into @to_navigator@:
+
+* :label
+* :title
+* :url
+* :highlights_on
+* :parent_id
+* :position
+* any other argument you want saved into the table of @nav_items@ table
+
+_For more information about each item, see the wiki._
+
+h2. Rendering it onto a page
+
+You've got your nav_items all set and you want to render it to the menu. I've created a Renderer - the SimpleNavigation renderer that fetches all the nav_items in the database and renders it on the page using "andi's simple-navigation gem":https://github.com/andi/simple-navigation. This is the default choice. To render stuff into the page, you get the @navi_render@ helper:
+
+pre. <%= navi_render NavItem.roots %>
+
+You must supply an array of top-most items to render. What do I mean? "top-most" means all the root items, for example, or a generation of items. This will render that generation and all their children in a nested @ul@. See @lib/navi/renderers/simple_navigation.rb@ for more info.
+
+You can create your own renderer too. For this, see the wiki. I could add these into the gem. Send me a pull request.
 
 h2. Contributing to navigable
 
