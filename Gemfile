@@ -15,7 +15,7 @@ gem "ordered_tree", ">= 0.1.6"
 # :test and :cucumber environments!
 #
 # Just remember to uncomment them when you publish (or make a pull request).
-#group :development, :test, :cucumber do
+group :development, :test, :cucumber do
   gem "rspec", "~> 2.6.0"
   gem "bundler", "~> 1.0.0"
   gem "jeweler", "~> 1.5.2"
@@ -45,4 +45,4 @@ gem "ordered_tree", ">= 0.1.6"
   gem 'libnotify'
   gem 'rb-inotify'
   gem 'nifty-generators'
-#end
+end
