@@ -2,9 +2,11 @@ module Navi
   module Renderers
     class SimpleNavigation < Navi::Renderers::Base
 
-      def render(collection)
-        items = create_dynamic_items(collection)
-        @template.render_navigation :items => items, :expand_all => true
+      def render(collection, *args)
+        options = Hash[*args]
+        options[:expand_all] ||= true
+        options[:items] ||= create_dynamic_items(collection)
+        @template.render_navigation options
       end
 
       private

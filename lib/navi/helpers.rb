@@ -7,18 +7,15 @@
 # context
 module Navi
   module Helpers
+    # Don't declare @renderer in here, or else it won't play nicely with Rails.
+
     def self.included(base)
       #puts "Navi::Helpers was included into #{base}"
     end
 
-    def navi_render(collection)
-      renderer.render(collection)
-    end
-
-    private
-
-    def renderer
-      @renderer ||= Navi.renderer.new(self)
+    def navi_render(collection, *args)
+      @navi_renderer ||= Navi.renderer.new(self)
+      @navi_renderer.render(collection, *args)
     end
   end
 end
