@@ -8,6 +8,7 @@ module Navi
         self.navigable_config = options
         has_one Navi.navigator, :as => :navigable
         include Navi::Navigable::InstanceMethods
+        before_destroy :prepare_standalone_navigator!
       end
     end
   end

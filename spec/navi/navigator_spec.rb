@@ -7,7 +7,7 @@ describe MenuItem do
       MenuItem.new.should_not be_valid
       MenuItem.new(:label => "Something").should_not be_valid
       MenuItem.new(:url => "Something").should_not be_valid
-      MenuItem.new(:navigable => Page.make).should be_valid
+      MenuItem.new(:navigable => Factory(:page)).should be_valid
       MenuItem.new(:label => "", :url => "").should_not be_valid
       MenuItem.new(:label => "Not blank", :url => "Some url").should be_valid
     end
@@ -15,10 +15,22 @@ describe MenuItem do
 
   describe "when configuring ordered_tree" do
     # After we run the tests, reset the ordered tree changes we may have made
-    after { MenuItem.class_eval {
-      ordered_tree # set ordered_tree with no args
-      def scope_condition; "1=1"; end # this is the default scope condition in ordered_tree gem
-    } }
+    before do
+      # Remove the constant to avoid warnings
+      Object.send(:remove_const, :MenuItemDup) if defined?(MenuItemDup)
+
+      # duplicate the MenuItem and modify MenuItem to set back later
+      MenuItemDup = MenuItem.dup
+      MenuItem.class_eval do
+        ordered_tree # set ordered_tree with no args
+        def scope_condition; "1=1"; end # this is the default scope condition in ordered_tree gem
+      end
+    end
+
+    after do
+      Object.send :remove_const, :MenuItem
+      MenuItem = MenuItemDup
+    end
 
     it "should allow overriding of ordered_tree's scope_condition" do
       MenuItem.class_eval do
@@ -26,9 +38,9 @@ describe MenuItem do
           "site_id = #{site_id}"
         end
       end
-      MenuItem.make(:site_id => 1)
-      MenuItem.make(:site_id => 2)
-      menu_item = MenuItem.make(:site_id => 1)
+      Factory(:menu_item, :site_id => 1)
+      Factory(:menu_item, :site_id => 2)
+      menu_item = Factory(:menu_item, :site_id => 1)
       menu_item.position.should == 2
     end
 
@@ -36,9 +48,9 @@ describe MenuItem do
       MenuItem.class_eval do
         ordered_tree :scope => :site
       end
-      MenuItem.make(:site_id => 3)
-      MenuItem.make(:site_id => 4)
-      menu_item = MenuItem.make(:site_id => 3)
+      Factory(:menu_item, :site_id => 3).position.should == 1
+      Factory(:menu_item, :site_id => 4)
+      menu_item = Factory(:menu_item, :site_id => 3)
       menu_item.position.should == 2
     end
   end
@@ -68,7 +80,7 @@ describe MenuItem do
           end
         end
       end
-      
+
       describe "and there is no navigable model" do
         it "should return nil" do
           MenuItem.new.label.should == nil

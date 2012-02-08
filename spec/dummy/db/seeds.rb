@@ -8,8 +8,8 @@
 
 require '../../spec/blueprints'
 
-Page.make :name => "Home"
-Page.make :name => "About"
+Factory :page, :name => "Home"
+Factory :page, :name => "About"
 
-Category.make :name => "Cars"
-Category.make :name => "Animals"
+Factory :category, :name => "Cars"
+Factory :category, :name => "Animals"

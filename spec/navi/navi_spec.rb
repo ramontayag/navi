@@ -68,7 +68,7 @@ describe Navi do
 
   describe "#to_navigator!" do
     it "should immediately create the navigator item" do
-      category = Category.make
+      category = Factory :category
       navigator = category.to_navigator!
       navigator.should_not be_new_record
     end

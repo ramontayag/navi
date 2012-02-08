@@ -16,8 +16,34 @@ module Navi
       private
 
       # Easily get the navigator instance based on the Navi.navigator setting
+      # Uses own finder because upon destroy the polymorphic association seemed
+      # to break.
       def navigator_instance
-        @navigator_instance ||= send(Navi.navigator)
+        @navigator_instance ||= Navi.navigator.to_s.classify.constantize.where(
+          :navigable_id   => self.id,
+          :navigable_type => self.class.name
+        ).first
+      end
+
+      def prepare_standalone_navigator!
+        set_navigator_label_to_self!
+        set_navigator_url_to_hash!
+        nullify_navigator_pointer_to_self!
+      end
+
+      def set_navigator_label_to_self!
+        navigator_instance.label = navigator_instance.label
+      end
+
+      def set_navigator_url_to_hash!
+        navigator_instance.url = "#"
+      end
+
+      def nullify_navigator_pointer_to_self!
+        navigator_instance.update_attributes(
+          :navigable_id   => nil,
+          :navigable_type => nil
+        )
       end
     end
   end
