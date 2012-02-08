@@ -1,8 +1,9 @@
 # Configure Rails Envinronment
 ENV["RAILS_ENV"] = "test"
 
+require 'factory_girl'
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-require File.expand_path("../blueprints.rb",  __FILE__)
+require File.expand_path("../factories.rb",  __FILE__)
 require "rails/test_help"
 require "rspec/rails"
 
@@ -24,7 +25,8 @@ def migrate(direction)
   migration_files = Dir["#{migration_directory}/[0-9]*_*.rb"]
   migration_files.each {|migration_file| require migration_file} # require them so we can execute them
   case direction
-  when :up   : migration_files.each { |file_name| $1.camelize.constantize.up if file_name =~ /[\w\/\.]*\/\d*_(.*)\.rb$/ }
+  when :up
+    migration_files.each { |file_name| $1.camelize.constantize.up if file_name =~ /[\w\/\.]*\/\d*_(.*)\.rb$/ }
   when :down
     # Originally: migration_files.sort.reverse.each { |file_name| $1.camelize.constantize.down if file_name =~ /[\w\/\.]*\/\d*_(.*)\.rb$/ }
     # But better to just drop all tables
@@ -122,5 +124,5 @@ end
 #Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 #RSpec.configure do |config|
-  
+
 #end

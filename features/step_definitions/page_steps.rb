@@ -1,3 +1,3 @@
 Given /^a page "([^"]*)" exists$/ do |name|
-  Page.make :name => name
+  Factory :page, :name => name
 end

@@ -10,7 +10,7 @@ Here are a few things to keep in mind:
 
 h2. Installation
 
-This has only been tested with Rails 3.0.x.
+The tests run against Rails 3.2.x and Ruby 1.9.2.
 
 In your Gemfile: @gem 'navi'@
 
@@ -59,7 +59,7 @@ You can create your own renderer too. For this, see the wiki. I could add these 
 h2. Contributing to navigable
 
 _To develop and run tests, see the Gemfile and read the comments right above the :development, :test, :cucumber group._
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project

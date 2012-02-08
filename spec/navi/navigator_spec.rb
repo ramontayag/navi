@@ -7,7 +7,7 @@ describe MenuItem do
       MenuItem.new.should_not be_valid
       MenuItem.new(:label => "Something").should_not be_valid
       MenuItem.new(:url => "Something").should_not be_valid
-      MenuItem.new(:navigable => Page.make).should be_valid
+      MenuItem.new(:navigable => Factory(:page)).should be_valid
       MenuItem.new(:label => "", :url => "").should_not be_valid
       MenuItem.new(:label => "Not blank", :url => "Some url").should be_valid
     end
@@ -26,9 +26,9 @@ describe MenuItem do
           "site_id = #{site_id}"
         end
       end
-      MenuItem.make(:site_id => 1)
-      MenuItem.make(:site_id => 2)
-      menu_item = MenuItem.make(:site_id => 1)
+      Factory(:menu_item, :site_id => 1)
+      Factory(:menu_item, :site_id => 2)
+      menu_item = Factory(:menu_item, :site_id => 1)
       menu_item.position.should == 2
     end
 
@@ -36,9 +36,9 @@ describe MenuItem do
       MenuItem.class_eval do
         ordered_tree :scope => :site
       end
-      MenuItem.make(:site_id => 3)
-      MenuItem.make(:site_id => 4)
-      menu_item = MenuItem.make(:site_id => 3)
+      Factory(:menu_item, :site_id => 3)
+      Factory(:menu_item, :site_id => 4)
+      menu_item = Factory(:menu_item, :site_id => 3)
       menu_item.position.should == 2
     end
   end
@@ -68,7 +68,7 @@ describe MenuItem do
           end
         end
       end
-      
+
       describe "and there is no navigable model" do
         it "should return nil" do
           MenuItem.new.label.should == nil

@@ -17,7 +17,7 @@ pkg
 # Ignore cucumber's rerun file
 rerun.txt
 
-# Have editor/IDE/OS specific files you need to ignore? Consider using a global gitignore: 
+# Have editor/IDE/OS specific files you need to ignore? Consider using a global gitignore:
 #
 # * Create a file at ~/.gitignore
 # * Include files you want ignored
@@ -46,3 +46,4 @@ rerun.txt
 
 # ignore some stuff in the included dummy app
 spec/dummy/db/*.sql
+spec/dummy/log
