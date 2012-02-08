@@ -15,10 +15,22 @@ describe MenuItem do
 
   describe "when configuring ordered_tree" do
     # After we run the tests, reset the ordered tree changes we may have made
-    after { MenuItem.class_eval {
-      ordered_tree # set ordered_tree with no args
-      def scope_condition; "1=1"; end # this is the default scope condition in ordered_tree gem
-    } }
+    before do
+      # Remove the constant to avoid warnings
+      Object.send(:remove_const, :MenuItemDup) if defined?(MenuItemDup)
+
+      # duplicate the MenuItem and modify MenuItem to set back later
+      MenuItemDup = MenuItem.dup
+      MenuItem.class_eval do
+        ordered_tree # set ordered_tree with no args
+        def scope_condition; "1=1"; end # this is the default scope condition in ordered_tree gem
+      end
+    end
+
+    after do
+      Object.send :remove_const, :MenuItem
+      MenuItem = MenuItemDup
+    end
 
     it "should allow overriding of ordered_tree's scope_condition" do
       MenuItem.class_eval do
@@ -36,7 +48,7 @@ describe MenuItem do
       MenuItem.class_eval do
         ordered_tree :scope => :site
       end
-      Factory(:menu_item, :site_id => 3)
+      Factory(:menu_item, :site_id => 3).position.should == 1
       Factory(:menu_item, :site_id => 4)
       menu_item = Factory(:menu_item, :site_id => 3)
       menu_item.position.should == 2

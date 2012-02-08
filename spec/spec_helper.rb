@@ -6,6 +6,7 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require File.expand_path("../factories.rb",  __FILE__)
 require "rails/test_help"
 require "rspec/rails"
+require 'database_cleaner'
 
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
@@ -49,6 +50,18 @@ RSpec.configure do |config|
 
   # == Mock Framework
   config.mock_with :rspec
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
 
 # Adds the *args to the klass and yields the new_klass

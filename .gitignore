@@ -46,4 +46,5 @@ rerun.txt
 
 # ignore some stuff in the included dummy app
 spec/dummy/db/*.sql
+spec/dummy/db/*.sqlite3
 spec/dummy/log
