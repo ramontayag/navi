@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = "Allows you to save menu items in the database. You can create your own renderer."
   s.homepage = "https://github.com/ramontayag/navi"
 
-  s.rubyforge_project = "storey"
+  s.rubyforge_project = "navi"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
