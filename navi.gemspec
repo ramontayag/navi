@@ -46,8 +46,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'libnotify'
   s.add_development_dependency 'rb-inotify'
   s.add_development_dependency 'nifty-generators'
-  s.add_development_dependency 'factory_girl', '~> 2.1.0'
-  #s.add_development_dependency 'factory_girl_rails', '~> 1.2'
+  s.add_development_dependency 'factory_girl', '~> 2.5.1'
   s.add_development_dependency 'ruby-debug19'
 end
 
