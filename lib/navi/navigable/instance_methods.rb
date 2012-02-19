@@ -26,9 +26,11 @@ module Navi
       end
 
       def prepare_standalone_navigator!
-        set_navigator_label_to_self!
-        set_navigator_url_to_hash!
-        nullify_navigator_pointer_to_self!
+        if navigator_instance
+          set_navigator_label_to_self!
+          set_navigator_url_to_hash!
+          nullify_navigator_pointer_to_self!
+        end
       end
 
       def set_navigator_label_to_self!
