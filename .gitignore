@@ -48,4 +48,3 @@ rerun.txt
 spec/dummy/db/*.sql
 spec/dummy/db/*.sqlite3
 spec/dummy/log
-.rvmrc
