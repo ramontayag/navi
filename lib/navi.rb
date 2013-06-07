@@ -18,5 +18,5 @@ module Navi
   @@navigator ||= :nav_item
 
   mattr_accessor :renderer
-  @@renderer ||= Navi::Renderers::SimpleNavigation
+  @@renderer ||= Navi::Renderers::SimpleNavigation::Renderer
 end
