@@ -4,7 +4,7 @@ describe "Navigable" do
   context "when deleted" do
     context "and the navigator has a navigable item" do
       before do
-        page = Factory :page, :name => "Page name"
+        page = FactoryGirl.create(:page, name: "Page name")
         @menu_item = page.to_navigator!
         page.destroy
         @menu_item.reload
@@ -24,7 +24,7 @@ describe "Navigable" do
 
     context "and the navigable has no navigator item" do
       before do
-        @page = Factory :page, :name => "Page name"
+        @page = FactoryGirl.create(:page, name: "Page name")
       end
 
       it "should not blow up" do

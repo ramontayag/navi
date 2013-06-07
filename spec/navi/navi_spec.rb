@@ -13,8 +13,8 @@ describe Navi do
       end
     end
 
-    it "should default to Navi::Renderers::SimpleNavigation" do
-      Navi.renderer.should == Navi::Renderers::SimpleNavigation
+    it "should default to Navi::Renderers::SimpleNavigation::Renderer" do
+      Navi.renderer.should == Navi::Renderers::SimpleNavigation::Renderer
     end
 
     it "should allow customization" do
@@ -68,7 +68,7 @@ describe Navi do
 
   describe "#to_navigator!" do
     it "should immediately create the navigator item" do
-      category = Factory :category
+      category = FactoryGirl.create(:category)
       navigator = category.to_navigator!
       navigator.should_not be_new_record
     end

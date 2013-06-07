@@ -5,8 +5,6 @@ module Navi
 
       def initialize(context)
         @context = context
-        @controller = controller_from @context
-        @template = template_from @controller
       end
 
       def render(collection)
@@ -15,16 +13,20 @@ module Navi
 
       private
 
-      # Pretty much lifted from 
-      # https://github.com/andi/simple-navigation/blob/master/lib/simple_navigation/adapters/rails.rb
-      def controller_from(context)
-        context.respond_to?(:controller) ? context.controller : context
+      def controller
+        @controller ||= if @context.respond_to?(:controller)
+                          @context.controller
+                        else
+                          @context
+                        end
       end
 
-      # Pretty much lifted from 
-      # https://github.com/andi/simple-navigation/blob/master/lib/simple_navigation/adapters/rails.rb
-      def template_from(controller)
-        controller.respond_to?(:view_context) ? controller.view_context : controller.instance_variable_get(:@template)
+      def template
+        @template ||= if controller.respond_to?(:view_context)
+                        controller.view_context
+                      else
+                        controller.instance_variable_get(:@template)
+                      end
       end
     end
   end

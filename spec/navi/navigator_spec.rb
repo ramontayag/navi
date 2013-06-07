@@ -7,7 +7,7 @@ describe MenuItem do
       MenuItem.new.should_not be_valid
       MenuItem.new(:label => "Something").should_not be_valid
       MenuItem.new(:url => "Something").should_not be_valid
-      MenuItem.new(:navigable => Factory(:page)).should be_valid
+      MenuItem.new(:navigable => FactoryGirl.create(:page)).should be_valid
       MenuItem.new(:label => "", :url => "").should_not be_valid
       MenuItem.new(:label => "Not blank", :url => "Some url").should be_valid
     end
@@ -38,9 +38,9 @@ describe MenuItem do
           "site_id = #{site_id}"
         end
       end
-      Factory(:menu_item, :site_id => 1)
-      Factory(:menu_item, :site_id => 2)
-      menu_item = Factory(:menu_item, :site_id => 1)
+      FactoryGirl.create(:menu_item, :site_id => 1)
+      FactoryGirl.create(:menu_item, :site_id => 2)
+      menu_item = FactoryGirl.create(:menu_item, :site_id => 1)
       menu_item.position.should == 2
     end
 
@@ -48,9 +48,9 @@ describe MenuItem do
       MenuItem.class_eval do
         ordered_tree :scope => :site
       end
-      Factory(:menu_item, :site_id => 3).position.should == 1
-      Factory(:menu_item, :site_id => 4)
-      menu_item = Factory(:menu_item, :site_id => 3)
+      FactoryGirl.create(:menu_item, :site_id => 3).position.should == 1
+      FactoryGirl.create(:menu_item, :site_id => 4)
+      menu_item = FactoryGirl.create(:menu_item, :site_id => 3)
       menu_item.position.should == 2
     end
   end

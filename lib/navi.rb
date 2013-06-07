@@ -1,3 +1,4 @@
+require 'easy_class_to_instance_method'
 require 'active_support'
 require "active_support/core_ext/module" # so we can use mattr_accessor
 require 'active_record'
@@ -18,5 +19,5 @@ module Navi
   @@navigator ||= :nav_item
 
   mattr_accessor :renderer
-  @@renderer ||= Navi::Renderers::SimpleNavigation
+  @@renderer ||= Navi::Renderers::SimpleNavigation::Renderer
 end

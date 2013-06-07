@@ -6,10 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-require '../../spec/blueprints'
+FactoryGirl.create :page, :name => "Home"
+FactoryGirl.create :page, :name => "About"
 
-Factory :page, :name => "Home"
-Factory :page, :name => "About"
-
-Factory :category, :name => "Cars"
-Factory :category, :name => "Animals"
+FactoryGirl.create :category, :name => "Cars"
+FactoryGirl.create :category, :name => "Animals"

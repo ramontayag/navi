@@ -1,6 +1,10 @@
 ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../../../spec/dummy/config/environment.rb",  __FILE__)
-require File.expand_path("../../../spec/blueprints.rb",  __FILE__)
+SPEC_DIR = File.join(File.dirname(__FILE__), '..', '..', 'spec')
+require File.join(SPEC_DIR, 'dummy', 'config', 'environment')
+
+require 'factory_girl'
+require File.join(SPEC_DIR, 'factories')
+Dir.glob(File.join(SPEC_DIR, 'factories', '**', '*.rb')).each {|f| require f}
 
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'cucumber/rails/rspec'
@@ -56,6 +60,7 @@ if defined?(ActiveRecord::Base)
   begin
     require 'database_cleaner'
     DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
   rescue LoadError => ignore_if_database_cleaner_not_present
   end
 end
