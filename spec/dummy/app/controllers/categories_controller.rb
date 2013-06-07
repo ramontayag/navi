@@ -1,8 +1,8 @@
-class CategoriesController < InheritedResources::Base
+class CategoriesController < ApplicationController
+  respond_to :html
 
   def create
-    create! do |success, failure|
-      success.html {redirect_to categories_url}
-    end
+    @category = Category.create(params[:category])
+    respond_with @category, location: categories_path
   end
 end

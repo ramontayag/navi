@@ -1,7 +1,8 @@
-class PagesController < InheritedResources::Base
+class PagesController < ApplicationController
+  respond_to :html
+
   def create
-    create! do |success, failure|
-      success.html {redirect_to pages_path}
-    end
+    @page = Page.create(params[:page])
+    respond_with @page, location: pages_path
   end
 end

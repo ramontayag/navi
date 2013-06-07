@@ -3,5 +3,5 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require 'nestedSortable/jquery.ui.nestedSortable'
+//= require 'nestedSortable'
 //= require 'menu_items/index'

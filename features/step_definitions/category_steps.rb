@@ -1,3 +1,3 @@
 Given /^a category "([^"]*)" exists$/ do |name|
-  Factory :category, :name => name
+  FactoryGirl.create :category, name: name
 end

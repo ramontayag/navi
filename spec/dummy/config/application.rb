@@ -7,7 +7,6 @@ Bundler.require
 # Don't know why I had to add these here, but did so because
 # Rails was complaining these things didn't exist.
 # Shouldn't Bundler be the one to load these in?
-require "inherited_resources"
 require "apotomo"
 
 module Dummy
