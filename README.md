@@ -58,6 +58,14 @@ You must supply an array of top-most items to render. What do I mean? "top-most"
 
 You can create your own renderer too. For this, see the wiki. I could add these into the gem. Send me a pull request.
 
+## Namespace
+
+You can render all your links in a namespace:
+
+    <%= navi_render NavItem.roots, namespace: 'preview' %>
+
+This is useful if you want to generate the same links but have them all point to a different route. For example, you have a CMS and there's a preview section where you want the links that are generated to be the same, yet point to all other preview pages in the CMS.
+
 # Contributing to navigable
 
 _To develop and run tests, see the Gemfile and read the comments right above the :development, :test, :cucumber group._
