@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "activerecord", [">= 3.0.0"]
   s.add_runtime_dependency "ordered_tree", [">= 0.1.6"]
   s.add_runtime_dependency 'simple-navigation', ['~> 3.11.0']
+  s.add_runtime_dependency 'easy_class_to_instance_method', '0.0.1'
 
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rails', ['~> 3.2.0']

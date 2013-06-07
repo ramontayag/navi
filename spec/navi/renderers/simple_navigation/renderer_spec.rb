@@ -11,39 +11,31 @@ require 'spec_helper'
 # That means this is the output we need if we want to get it working with SimpleNavigation.
 
 describe Navi::Renderers::SimpleNavigation::Renderer do
-  #class ControllerMock
-    #include SimpleNavigation::Helpers
-  #end
-  #it "should properly convert all the nav items to an array of hashes SimpleNavigation gem can understand" do
-    #about = Page.make(:name => "About").to_navigator!
-    #home = Page.make(:name => "Home").to_navigator!
-    #board_members = Page.make(:name => "Board Members").to_navigator!(:parent_id => about.id)
 
-    #rendered_navigation = Navi::Renderers::SimpleNavigation.render(MenuItem.roots)
-    #rendered_navigation.should == "something"
-    #[
-      #{
-        #:key => :"page_#{about.id}",
-        #:name => "About",
-        #:url => "/pages/#{about.id}",
-        #:options => {},
-        #:items => [
-          #{
-            #:key => :"page_#{board_members.id}",
-            #:name => "Board Members",
-            #:url => "/pages/#{board_members.id}",
-            #:options => {},
-            #:items => []
-          #}
-        #]
-      #},
-      #{
-        #:key => :"page_#{home.id}",
-        #:name => "Home",
-        #:url => "/pages/#{home.id}",
-        #:options => {},
-        #:items => []
-      #}
-    #]
-  #end
+  describe '#render' do
+    before do
+      @template = OpenStruct.new
+      @controller = OpenStruct.new(view_context: @template)
+      @context = OpenStruct.new(controller: @controller)
+    end
+
+    it 'should call render_navigation' do
+      rendered_navigation = "rendered navigation"
+
+      items = ['items']
+      dynamic_items = ['dynamic items']
+      Navi::Renderers::SimpleNavigation::DynamicItems.
+        stub(:new).with(@template, items, namespace: 'admin').
+        and_return(dynamic_items)
+
+      @template.stub(:render_navigation).
+        with(expand_all: true, items: dynamic_items).
+        and_return(rendered_navigation)
+
+      renderer = described_class.new(@context)
+      result = renderer.render(items, namespace: 'admin')
+      expect(result).to eq('rendered navigation')
+    end
+  end
+
 end
