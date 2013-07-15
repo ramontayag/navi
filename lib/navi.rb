@@ -1,4 +1,3 @@
-require 'easy_class_to_instance_method'
 require 'active_support'
 require "active_support/core_ext/module" # so we can use mattr_accessor
 require 'active_record'

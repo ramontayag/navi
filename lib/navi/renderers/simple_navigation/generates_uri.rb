@@ -2,7 +2,10 @@ module Navi
   module Renderers
     module SimpleNavigation
       class GeneratesUri
-        easy_class_to_instance
+
+        def self.execute(*args)
+          self.new(*args).execute
+        end
 
         def initialize(template, nav_item, options={})
           @template = template
