@@ -80,7 +80,7 @@ _To develop and run tests, see the Gemfile and read the comments right above the
 
 # Copyright
 
-Copyright (c) 2011-2012 Ramon Tayag. See LICENSE.txt for further details.
+Copyright (c) 2011-2014 Ramon Tayag. See LICENSE.txt for further details.
 
 [wordpress_menu_editor_info]: http://en.support.wordpress.com/menus/
 [simple_navigation]: https://github.com/andi/simple-navigation
