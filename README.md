@@ -1,6 +1,6 @@
 # navigable
 
-**navi** puts the navigation (aka menu) in the database. That means you and/or your users can edit and control it. It was made with [WordPress' menu editor][wordpress_menu_editor_image] in mind.
+**navi** puts the navigation (aka menu) in the database. That means you and/or your users can edit and control it. It was made with [WordPress' menu editor][wordpress_menu_editor_info] in mind.
 
 Here are a few things to keep in mind:
 
@@ -82,5 +82,5 @@ _To develop and run tests, see the Gemfile and read the comments right above the
 
 Copyright (c) 2011-2012 Ramon Tayag. See LICENSE.txt for further details.
 
-[wordpress_menu_editor_image]: http://dl.dropbox.com/u/16150176/until%20dec%202013/wp-menu.png
+[wordpress_menu_editor_info]: http://en.support.wordpress.com/menus/
 [simple_navigation]: https://github.com/andi/simple-navigation
